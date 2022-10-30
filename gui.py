@@ -239,13 +239,8 @@ def compressorGUI(root:Tk):
     def getCompress():
         file_path_source = sourceFilePathTxtBox.get('1.0',END).replace('\n','')
         file_path_destination = destinationFilePathTxtBox.get('1.0',END).replace('\n','')
-        try:
-            errorLabel.config(text='')
-            compressTask = Thread(target=compress,args=(file_path_source, file_path_destination, compressProgressBar, compressPercentTxt, compressBtn))
-            compressTask.start()
-        except:
-            errorLabel.config(text='ERROR')
-            compressBtn.config(state=NORMAL)
+        compressTask = Thread(target=compress,args=(file_path_source, file_path_destination, compressProgressBar, compressPercentTxt, compressBtn))
+        compressTask.start()
 
     #-- Wrapper snippet [compressBtn]
     compressFrame = Frame(
@@ -271,25 +266,6 @@ def compressorGUI(root:Tk):
         command=getCompress
     )
     compressBtn.pack(fill='both', expand=True)
-
-    errorFrame = Frame(
-        compressorWindow,
-        background=colors[1],
-        width=110,
-        height=33
-    )
-    errorFrame.pack(fill='none',expand=False)
-    errorFrame.place(x=550,y=410)
-    errorFrame.pack_propagate(False)
-    
-    errorLabel = Label(
-        errorFrame,
-        background=colors[1],
-        text='',
-        font=('Consolas','12',BOLD),
-        fg='red'
-    )
-    errorLabel.pack(fill='both', expand=True)
 
 #-- Decompressor Graphical User Interface
 def decompressorGUI(root:Tk):
@@ -504,13 +480,8 @@ def decompressorGUI(root:Tk):
     def getDecompress():
         file_path_source = sourceFilePathTxtBox.get('1.0',END).replace('\n','')
         file_path_destination = destinationFilePathTxtBox.get('1.0',END).replace('\n','')
-        try:
-            errorLabel.config(text='')
-            compressTask = Thread(target=decompress,args=(file_path_source, file_path_destination, decompressProgressBar, decompressPercentTxt, decompressBtn))
-            compressTask.start()
-        except:
-            errorLabel.config(text='ERROR')
-            decompressBtn.config(state=NORMAL)
+        compressTask = Thread(target=decompress,args=(file_path_source, file_path_destination, decompressProgressBar, decompressPercentTxt, decompressBtn))
+        compressTask.start()
 
     #-- Wrapper snippet [decompressBtn]
     decompressFrame = Frame(
@@ -536,25 +507,6 @@ def decompressorGUI(root:Tk):
         command=getDecompress
     )
     decompressBtn.pack(fill='both', expand=True)
-
-    errorFrame = Frame(
-        decompressorWindow,
-        background=colors[1],
-        width=110,
-        height=33
-    )
-    errorFrame.pack(fill='none',expand=False)
-    errorFrame.place(x=550,y=410)
-    errorFrame.pack_propagate(False)
-    
-    errorLabel = Label(
-        errorFrame,
-        background=colors[1],
-        text='',
-        font=('Consolas','12',BOLD),
-        fg='red'
-    )
-    errorLabel.pack(fill='both', expand=True)
 
 #-- Initial Graphical User Interface
 def mainGUI():
