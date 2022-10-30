@@ -9,7 +9,7 @@ Compress spects:
 - Markov Orden 1
 - Burrows Wheeler
 -----------------------------------------------------------------------------------------
-File spects:
+KHZ File spects:
 - Header:
     - [4 Bytes]     **FileSize:** *Full file size (Byte)*
     - [4 Bytes]     **HeaderSize:** *Full header size (Byte)*
