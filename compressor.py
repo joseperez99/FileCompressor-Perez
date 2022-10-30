@@ -3,7 +3,7 @@ import time
 from tkinter import *
 from tkinter.ttk import Progressbar
 
-from barrow_wheeler import *
+from burrows_wheeler import *
 from tree_dataStruct import *
 from ioFile import *
 
