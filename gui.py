@@ -1,4 +1,5 @@
-import os
+from pathlib import Path
+
 from threading import Thread
 from tkinter import *
 from tkinter import Tk
@@ -97,7 +98,7 @@ def compressorGUI(root:Tk):
     #-- Select source path of the file to compress.
     def sourceFilePathSelectorCompress():
         sourceFilePathTxtBox.delete('1.0', END)
-        source_file_path = filedialog.askopenfilename(title='abrir', initialdir=os.getcwd(), filetypes=[("Todos los Archivos", "*.*")])
+        source_file_path = filedialog.askopenfilename(title='abrir', initialdir=Path.cwd(), filetypes=[("Todos los Archivos", "*.*")])
         sourceFilePathTxtBox.insert('1.0',source_file_path)
     
     #-- Wrapper snippet [Button to select source filepath]
@@ -167,7 +168,7 @@ def compressorGUI(root:Tk):
     #-- Select destination path of the file to compress.
     def destinationFilePathSelectorCompress():
         destinationFilePathTxtBox.delete('1.0', END)
-        destination_file_path = filePath = filedialog.askdirectory(title='abrir', initialdir=os.getcwd())
+        destination_file_path = filePath = filedialog.askdirectory(title='abrir', initialdir=Path.cwd())
         destinationFilePathTxtBox.insert('1.0',destination_file_path)
 
     #-- Wrapper snippet [Button to select destination filepath]
@@ -339,7 +340,7 @@ def decompressorGUI(root:Tk):
     #-- Select source path of the file to descompress.
     def sourceFilePathSelectorDecompress():
         sourceFilePathTxtBox.delete('1.0', END)
-        source_file_path = filedialog.askopenfilename(title='abrir', initialdir=os.getcwd(), filetypes=[("Solo archivos KHZ", "*.khz")])
+        source_file_path = filedialog.askopenfilename(title='abrir', initialdir=Path.cwd(), filetypes=[("Solo archivos KHZ", "*.khz")])
         sourceFilePathTxtBox.insert('1.0',source_file_path)
     
     #-- Wrapper snippet [Button to select source filepath]
@@ -409,7 +410,7 @@ def decompressorGUI(root:Tk):
     #-- Select destination path of the file to descompress.
     def destinationFilePathSelectorDecompress():
         destinationFilePathTxtBox.delete('1.0', END)
-        destination_file_path = filePath = filedialog.askdirectory(title='abrir', initialdir=os.getcwd())
+        destination_file_path = filePath = filedialog.askdirectory(title='abrir', initialdir=Path.cwd())
         destinationFilePathTxtBox.insert('1.0',destination_file_path)
 
     #-- Wrapper snippet [Button to select destination filepath]
@@ -602,7 +603,7 @@ def mainGUI():
     )
     compressRadioBtn.pack(fill='both', expand=True)
 
-    compressDescriptionTxt =  """Iniciar el programa como\ncompresor.\n\nPermite comprimir archivos usando\nHuffman Estatico, Markov de\norden 1 y Borrows Wheelers."""
+    compressDescriptionTxt =  """Iniciar el programa como\ncompresor.\n\nPermite comprimir archivos usando\nHuffman Estatico, Markov de\norden 1 y Burrows Wheeler."""
     compressDescriptionFrame = Frame(
         compressFrame,
         background=colors[1],

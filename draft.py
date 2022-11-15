@@ -1,4 +1,3 @@
-import os
 def bwt(inputStr:str) -> str:
     """
     Burrows-Wheeler-Transform

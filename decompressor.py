@@ -1,4 +1,5 @@
-import os
+from pathlib import Path
+
 import time
 from tkinter import *
 from tkinter.ttk import Progressbar
@@ -26,7 +27,7 @@ def decompress(file_path_source:str, file_path_destination:str, decompressProgre
         decompressPercentTxt.set(f'{percent}%')
         #--------------------------------------------------#
 
-        fileName = os.path.basename(file_path_source).split('.')[0]
+        fileName = Path(file_path_source).name.split('.')[0]
 
         #-- File -> Char String
         bitString = readFileToBitString(file_path_source)
@@ -154,7 +155,9 @@ def decompress(file_path_source:str, file_path_destination:str, decompressProgre
         
         binaryDecompressedData = b''.join(ord(x).to_bytes(1, byteorder='big') for x in decompressedData)
 
-        decompressedFile = open(f'{file_path_destination}/o-{fileName}.{fileExtension}','wb')
+        file_to_save = Path(file_path_destination)
+        file_to_save = file_to_save / f'o-{fileName}.{fileExtension}'
+        decompressedFile = open(file_to_save,'wb')
         decompressedFile.write(binaryDecompressedData)
         decompressedFile.close()
 

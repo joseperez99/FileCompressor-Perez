@@ -1,4 +1,6 @@
-import os
+from importlib.resources import path
+from pathlib import Path
+
 import time
 from tkinter import *
 from tkinter.ttk import Progressbar
@@ -25,7 +27,7 @@ def compress(file_path_source:str, file_path_destination:str, compressProgressBa
         compressPercentTxt.set(f'{percent}%')
         #--------------------------------------------------#
         
-        fileBaseName = os.path.basename(file_path_source)
+        fileBaseName = Path(file_path_source).name
         fileName = fileBaseName.split('.')[0]
         fileExtension = fileBaseName.split('.')[-1]
 
@@ -194,7 +196,9 @@ def compress(file_path_source:str, file_path_destination:str, compressProgressBa
                             ]
                 )
 
-        compressFile = open(f'{file_path_destination}/{fileName}.khz','wb')
+        file_to_save = Path(file_path_destination)
+        file_to_save = file_to_save / f'{fileName}.khz'
+        compressFile = open(file_to_save,'wb')
         compressFile.write(binaryCompressData)
         compressFile.close()
 
